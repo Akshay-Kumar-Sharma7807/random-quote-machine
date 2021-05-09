@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(35, 212, 228, 0.616);
+}
+.wrapper {
+  width: 60%;
+  height: auto;
+  background-color: yellow;
+  box-shadow: 0px 0px 10px black;
+  padding: 20px;
+  border-radius: 10px;
+}
+#text::before {
+  content: "❝";
+  font-size: 60px;
+  color: rgba(143, 143, 143, 0.685);
+}
+#text {
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  padding: 6px;
+}
+
+#author {
+  text-align: right;
+  display: block;
+}
+#author::before {
+  content: "-";
+}
+button {
+  outline: none;
+  display: inline-block;
+  margin: 2px;
+  padding: 10px;
+  font-size: 110%;
+  background-color: #2453ee;
+  border-width: 0px;
+  border-radius: 4px;
+  transition: 0.2s ease;
+  color: white;
+}
+button:hover {
+  background-color: #2a38f5;
+}
+#new-quote {
+  float: right;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+#timblr,
+#twitter {
+  width: 50px;
+  height: auto;
+  text-align: center;
+}
