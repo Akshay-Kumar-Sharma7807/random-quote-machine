@@ -1,13 +1,15 @@
 import './App.css';
-import React, { Component } from 'react';
+import React,{useState,useEffect} from 'react';
 
-export default class App extends Component {
+export default function App() {
 
-  state={
+  let initialState={
       quote:"I am a quote",
       name:"I am author"
     }
-  quotes=[
+
+    const [quote, setquote] = useState(initialState)
+  let quotes=[
     {
       quote:"I am a new Quote",
       name:'I am a author'
@@ -433,38 +435,38 @@ export default class App extends Component {
       "name": "Eleanor Roosevelt"
   }
   ]
-  generateQuote=()=>{
-    console.log(this.quotes.length);
-    var random = Math.floor(Math.random() * (this.quotes.length - 0) ) + 0;
+  let generateQuote=()=>{
+    console.log(quotes.length);
+    var random = Math.floor(Math.random() * (quotes.length - 0) ) + 0;
     console.log(random);
-    this.setState(this.quotes[random])
+    setquote(quotes[random])
 
   }
-  render() {
+    useEffect(() => {
+        generateQuote();
+    }, [])
     return (
       <div class="container">
         <div class="wrapper" id="quote-box">
-        <h2 id="text">{this.state.quote}</h2>
+        <h2 id="text">{quote.quote}</h2>
         <br />
         <div>
-        <h3 id="author">{this.state.name}</h3>
+        <h3 id="author">{quote.name}</h3>
         </div>
         <div>
         <button id="twitter">
-        <a id="tweet-quote" target="_blank" href="http://twitter.com/intent/tweet"><i class="fab fa-twitter"></i></a>
+        <a id="tweet-quote" target="_blank" rel="noreferrer" href="http://twitter.com/intent/tweet"><i class="fab fa-twitter"></i></a>
         </button>
         <button id="timblr">
-        <a href="https://www.tumblr.com
-">
+        <a href="https://www.tumblr.com" rel="noreferrer">
         <i class="fab fa-tumblr"></i>
         </a>
         </button>
-        <button id="new-quote" onClick={this.generateQuote}>Next Quote</button>
+        <button id="new-quote" onClick={generateQuote}>Next Quote</button>
         </div>
         </div>
       </div>
     )
-  }
 }
 
 
