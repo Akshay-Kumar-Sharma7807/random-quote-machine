@@ -1,19 +1,15 @@
 import './App.css';
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 
 export default function App() {
 
   let initialState={
-      quote:"I am a quote",
-      name:"I am author"
+    quote:"Keep it as simple as possible but not simplest",
+    name:"Albert Einstein"
     }
 
     const [quote, setquote] = useState(initialState)
   let quotes=[
-    {
-      quote:"I am a new Quote",
-      name:'I am a author'
-    },
     {
       quote:"Keep it as simple as possible but not simplest",
       name:"Albert Einstein"
@@ -442,11 +438,9 @@ export default function App() {
     setquote(quotes[random])
 
   }
-    useEffect(() => {
-        generateQuote();
-    }, [])
     return (
-      <div class="container">
+      <div class="container" onLoad={()=>{generateQuote()}}>
+        <h1>Random Quote Machine</h1>
         <div class="wrapper" id="quote-box">
         <h2 id="text">{quote.quote}</h2>
         <br />
