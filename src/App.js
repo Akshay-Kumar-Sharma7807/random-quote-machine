@@ -7,7 +7,7 @@ export default function App() {
     quote:"Keep it as simple as possible but not simplest",
     name:"Albert Einstein"
     }
-
+    const [twitterLink, setTwitterLink] = useState(`https://twitter.com/intent/tweet?text=${initialState.quote} - ${initialState.name}`)
     const [quote, setquote] = useState(initialState)
   let quotes=[
     {
@@ -436,12 +436,14 @@ export default function App() {
     var random = Math.floor(Math.random() * (quotes.length - 0) ) + 0;
     console.log(random);
     setquote(quotes[random])
-
+    setTwitterLink((link)=>{
+        return  `https://twitter.com/intent/tweet?text=${quotes[random].quote} - ${quotes[random].name}`
+    })
   }
     return (
-      <div class="container" onLoad={()=>{generateQuote()}}>
-        <h1>Random Quote Machine</h1>
-        <div class="wrapper" id="quote-box">
+      <div className="container" onLoad={()=>{generateQuote()}}>
+        {/* <h1>Random Quote Machine</h1> */}
+        <div className="wrapper" id="quote-box">
         <h2 id="text">{quote.quote}</h2>
         <br />
         <div>
@@ -449,7 +451,7 @@ export default function App() {
         </div>
         <div>
         <button id="twitter">
-        <a id="tweet-quote" target="_blank" rel="noreferrer" href="http://twitter.com/intent/tweet"><i class="fab fa-twitter"></i></a>
+        <a id="tweet-quote" target="_blank" rel="noreferrer" href={twitterLink}><i class="fab fa-twitter"></i></a>
         </button>
         <button id="timblr">
         <a href="https://www.tumblr.com" rel="noreferrer">
